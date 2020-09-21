@@ -75,3 +75,44 @@ assert counts[3] != 100, "Make sure your argmax implementation randomly choooses
 # make sure the random number generator is called exactly once whenver `argmax` is called
 expected = [44, 0, 0, 56]  # <-- notice not perfectly uniform due to randomness
 assert counts == expected
+
+
+# -----------
+# Graded Cell
+# -----------
+class GreedyAgent(main_agent.Agent):
+    def agent_step(self, reward, observation):
+        """
+        Takes one step for the agent. It takes in a reward and observation and
+        returns the action the agent chooses at that time step.
+
+        Arguments:
+        reward -- float, the reward the agent recieved from the environment after taking the last action.
+        observation -- float, the observed state the agent is in. Do not worry about this as you will not use it
+                              until future lessons
+        Returns:
+        current_action -- int, the action chosen by the agent at the current time step.
+        """
+        ### Useful Class Variables ###
+        # self.q_values : An array with what the agent believes each of the values of the arm are.
+        # self.arm_count : An array with a count of the number of times each arm has been pulled.
+        # self.last_action : The action that the agent took on the previous time step
+        #######################
+
+        # Update Q values Hint: Look at the algorithm in section 2.4 of the textbook.
+
+        # increment the counter in self.arm_count for the action from the previous time step
+        # update the step size using self.arm_count
+        self.arm_count[self.last_action] += 1
+
+        # update self.q_values for the action from the previous time step
+        self.q_values[self.last_action] = self.q_values[self.last_action] + (1 / self.arm_count[self.last_action]) * (
+                reward - self.q_values[self.last_action])
+
+        # current action = ? # Use the argmax function you created above
+        # YOUR CODE HERE
+        current_action = argmax(self.q_values)
+
+        self.last_action = current_action
+
+        return current_action
