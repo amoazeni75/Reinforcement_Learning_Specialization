@@ -116,3 +116,46 @@ class GreedyAgent(main_agent.Agent):
         self.last_action = current_action
 
         return current_action
+
+
+# --------------
+# Debugging Cell
+# --------------
+# Feel free to make any changes to this cell to debug your code
+
+# build a fake agent for testing and set some initial conditions
+np.random.seed(1)
+greedy_agent = GreedyAgent()
+greedy_agent.q_values = [0, 0, 0.5, 0, 0]
+greedy_agent.arm_count = [0, 1, 0, 0, 0]
+greedy_agent.last_action = 1
+
+action = greedy_agent.agent_step(reward=1, observation=0)
+
+# make sure the q_values were updated correctly
+assert greedy_agent.q_values == [0, 0.5, 0.5, 0, 0]
+
+# make sure the agent is using the argmax that breaks ties randomly
+assert action == 2
+
+# lock
+# -----------
+# Tested Cell
+# -----------
+# The contents of the cell will be tested by the autograder.
+# If they do not pass here, they will not pass there.
+
+# build a fake agent for testing and set some initial conditions
+greedy_agent = GreedyAgent()
+greedy_agent.q_values = [0, 0, 1.0, 0, 0]
+greedy_agent.arm_count = [0, 1, 0, 0, 0]
+greedy_agent.last_action = 1
+
+# take a fake agent step
+action = greedy_agent.agent_step(reward=1, observation=0)
+
+# make sure agent took greedy action
+assert action == 2
+
+# make sure q_values were updated correctly
+assert greedy_agent.q_values == [0, 0.5, 1.0, 0, 0]
