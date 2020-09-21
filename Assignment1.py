@@ -158,3 +158,46 @@ assert action == 2
 
 # make sure q_values were updated correctly
 assert greedy_agent.q_values == [0, 0.5, 1.0, 0, 0]
+
+# ---------------
+# Discussion Cell
+# ---------------
+
+num_runs = 200  # The number of times we run the experiment
+num_steps = 1000  # The number of pulls of each arm the agent takes
+env = ten_arm_env.Environment  # We set what environment we want to use to test
+agent = GreedyAgent  # We choose what agent we want to use
+agent_info = {"num_actions": 10}  # We pass the agent the information it needs. Here how many arms there are.
+env_info = {}  # We pass the environment the information it needs. In this case nothing.
+
+all_averages = []
+
+average_best = 0
+for run in tqdm(range(num_runs)):  # tqdm is what creates the progress bar below
+    np.random.seed(run)
+
+    rl_glue = RLGlue(env, agent)  # Creates a new RLGlue experiment with the env and agent we chose above
+    rl_glue.rl_init(agent_info, env_info)  # We pass RLGlue what it needs to initialize the agent and environment
+    rl_glue.rl_start()  # We start the experiment
+
+    average_best += np.max(rl_glue.environment.arms)
+
+    scores = [0]
+    averages = []
+
+    for i in range(num_steps):
+        reward, _, action, _ = rl_glue.rl_step()  # The environment and agent take a step and return
+        # the reward, and action taken.
+        scores.append(scores[-1] + reward)
+        averages.append(scores[-1] / (i + 1))
+    all_averages.append(averages)
+
+plt.figure(figsize=(15, 5), dpi=80, facecolor='w', edgecolor='k')
+plt.plot([average_best / num_runs for _ in range(num_steps)], linestyle="--")
+plt.plot(np.mean(all_averages, axis=0))
+plt.legend(["Best Possible", "Greedy"])
+plt.title("Average Reward of Greedy Agent")
+plt.xlabel("Steps")
+plt.ylabel("Average reward")
+plt.show()
+greedy_scores = np.mean(all_averages, axis=0)
