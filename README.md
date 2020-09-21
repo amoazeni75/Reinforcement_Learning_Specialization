@@ -4,7 +4,7 @@
 
 Harnessing the full potential of artificial intelligence requires adaptive learning systems. Learn how Reinforcement Learning (RL) solutions help solve real-world problems through trial-and-error interaction by implementing a complete RL solution from beginning to end.</p>
 
-<h3>List of 4 Courses</h>
+<h3>List of 4 Courses</h3>
 <ol start="1">
  <li>Fundamentals of Reinforcement Learning</li>
   <li>Sample-based Learning Methods</li>
