@@ -138,7 +138,6 @@ assert greedy_agent.q_values == [0, 0.5, 0.5, 0, 0]
 # make sure the agent is using the argmax that breaks ties randomly
 assert action == 2
 
-# lock
 # -----------
 # Tested Cell
 # -----------
