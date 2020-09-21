@@ -1,2 +1,2 @@
-# RL_Alberta_Coursera
-This repository contains the programming assignment of the Fundamental of Reinforcement Learning course of University of Alberta on Coursera
+<h1>Reinforcement Learning Specialization</h1>
+<p>Master the Concepts of Reinforcement Learning. Implement a complete RL solution and understand how to apply AI tools to solve real-world problems.</p>
