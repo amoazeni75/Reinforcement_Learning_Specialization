@@ -1,10 +1,10 @@
-My programming assignments for Reinforcement Learning Specilization course on Coursera.
+My programming assignments for the Reinforcement Learning Specialization course on Coursera.
 
-### About the Specilization
+### About the Specialization
 The Reinforcement Learning Specialization consists of 4 courses exploring the power of adaptive learning systems and artificial intelligence (AI).
 
 Harnessing the full potential of artificial intelligence requires adaptive learning systems. Learn how Reinforcement Learning (RL) solutions help solve real-world problems through trial-and-error interaction by implementing a complete RL solution from beginning to end.
 
 The tools learned in this Specialization can be applied to game development (AI), customer interaction (how a website interacts with customers), smart assistants, recommender systems, supply chain, industrial control, finance, oil & gas pipelines, industrial control systems, and more.
 
-for more inforamtion and enrolment: ([Reinforcement Learning Specialization](https://www.coursera.org/specializations/reinforcement-learning))
+for more information and enrolment: ([Reinforcement Learning Specialization](https://www.coursera.org/specializations/reinforcement-learning))
